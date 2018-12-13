@@ -1,0 +1,34 @@
+{
+  "name": "bytic/mail-module",
+  "type": "library",
+  "description": "Mail Module for bytic framework",
+  "homepage": "https://github.com/bytic/mail-module",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Nip\\MailModule\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nip\\MailModule\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "bytic/database": "^0.9",
+    "bytic/orm": "^0.9",
+    "bytic/mail": "^0.9",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.2",
+    "mockery/mockery": "^0.9"
+  }
+}
