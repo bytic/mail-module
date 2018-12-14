@@ -25,6 +25,8 @@
     "bytic/database": "^0.9",
     "bytic/orm": "^0.9",
     "bytic/mail": "^0.9",
+    "bytic/medialibrary": "^0.8",
+    "bytic/filesystem": "^0.9",
     "ext-json": "*"
   },
   "require-dev": {
