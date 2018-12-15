@@ -179,7 +179,7 @@ trait EmailTrait
         $emailFiles = $this->getFiles();
         foreach ($emailFiles as $emailFile) {
             $message->attach(
-                Swift_Attachment::newInstance($emailFile->read())
+                Swift_Attachment::newInstance($emailFile->read(), $emailFile->getName())
             );
         }
     }

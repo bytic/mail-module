@@ -2,7 +2,7 @@
 
 namespace Nip\MailModule\Models\EmailsTable;
 
-use Nip\Mail\Models\Cleanup\RecordsTrait as CleanupRecordsTrait;
+use Nip\MailModule\Models\EmailsTable\Traits\Cleanup\RecordsTrait as CleanupRecordsTrait;
 
 /**
  * Trait EmailsTrait
