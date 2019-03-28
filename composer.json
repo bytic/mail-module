@@ -23,11 +23,11 @@
   },
   "require": {
     "php": "^7.0",
-    "bytic/database": "^0.9",
-    "bytic/orm": "^0.9",
-    "bytic/mail": "^0.9",
-    "bytic/medialibrary": "^0.8",
-    "bytic/filesystem": "^0.9",
+    "bytic/database": "^1.0",
+    "bytic/orm": "^1.0",
+    "bytic/mail": "^1.0",
+    "bytic/medialibrary": "^0.9",
+    "bytic/filesystem": "^1.0",
     "ext-json": "*"
   },
   "require-dev": {
