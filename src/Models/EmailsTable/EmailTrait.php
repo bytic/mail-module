@@ -4,7 +4,7 @@ namespace Nip\MailModule\Models\EmailsTable;
 
 use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
 use Nip\Mail\Models\Mailable\RecordTrait as MailableRecordTrait;
-use Nip\Mail\Models\MergeTags\RecordTrait as MergeTagsRecordTrait;
+use Nip\MailModule\Models\EmailsTable\Traits\MergeTags\MergeTagsRecordTrait;
 use Nip\Records\AbstractModels\Record;
 use Nip_File_System;
 use Swift_Attachment;
@@ -36,10 +36,8 @@ use Nip\Mail\Message;
 trait EmailTrait
 {
     use MailableRecordTrait;
-    use MergeTagsRecordTrait {
-        generateMergeTags as generateMergeTagsTrait;
-    }
     use HasMediaTrait;
+    use MergeTagsRecordTrait;
 
     public function populateFromConfig()
     {
@@ -87,14 +85,6 @@ trait EmailTrait
     }
 
     /**
-     * @return array
-     */
-    public function getVars()
-    {
-        return $this->getMergeTags();
-    }
-
-    /**
      * @return string
      */
     public function getSubject()
@@ -122,17 +112,6 @@ trait EmailTrait
     }
 
     /**
-     * @param $vars
-     * @return $this
-     */
-    public function setVars($vars)
-    {
-        $this->mergeTags = $vars;
-
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function insert()
@@ -154,22 +133,6 @@ trait EmailTrait
         $file = $this->getFiles()->delete();
     }
 
-    /**
-     * @inheritdoc
-     * Used to decode html entities to proper chars
-     */
-    protected function generateMergeTags()
-    {
-        $mergeTags = $this->generateMergeTagsTrait();
-        $mergeTags = array_map(
-            function ($item) {
-                return is_string($item) ? html_entity_decode($item, ENT_QUOTES) : $item;
-            },
-            $mergeTags
-        );
-
-        return $mergeTags;
-    }
 
     /**
      * @param Message $message
