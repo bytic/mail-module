@@ -21,7 +21,7 @@ trait MergeTagsRecordTrait
     public function setVars($vars)
     {
         if (is_string($vars)) {
-            $this->setDataValue('value', $vars);
+            $this->setDataValue('vars', $vars);
         } else {
             $this->mergeTags = $vars;
         }

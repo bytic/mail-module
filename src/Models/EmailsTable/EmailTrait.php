@@ -117,7 +117,7 @@ trait EmailTrait
     public function insert()
     {
         $this->saveMergeTagsToDbField();
-        $this->created = date(DATE_DB);
+        $this->created = date('Y-m-d H:i:s');
 
         return parent::insert();
     }
