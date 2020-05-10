@@ -2,9 +2,8 @@
 
 namespace Nip\MailModule\Utility;
 
+use Nip\MailModule\Console\Commands\EmailsCleanupData;
 use Nip\MailModule\Console\Commands\EmailsSend;
-use Nip\MailModule\Models\EmailsTable\EmailsTrait;
-use Nip\Records\Locator\ModelLocator;
 
 /**
  * Class EmailCrons
@@ -20,14 +19,25 @@ class EmailCrons
         return (new EmailsSend())->handle();
     }
 
+    public static function cleanup()
+    {
+        static::cleanupData();
+        static::cleanupRecords();
+    }
+
     /**
      * @return int
      */
-    public static function cleanup()
+    public static function cleanupRecords()
     {
-        /** @var EmailsTrait $emailsManager */
-        $emailsManager = ModelLocator::get('emails');
-        $result = $emailsManager->reduceOldEmailsData();
-        return $result->numRows();
+        return (new EmailsCleanupData())->handle();
+    }
+
+    /**
+     * @return int
+     */
+    public static function cleanupData()
+    {
+        return (new EmailsCleanupData())->handle();
     }
 }

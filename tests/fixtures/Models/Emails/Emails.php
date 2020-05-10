@@ -14,6 +14,17 @@ class Emails extends RecordManager
     use EmailsTrait;
 
     /**
+     * @return float[]|int[]
+     */
+    public static function reduceEmailsByType()
+    {
+        return [
+            '*' => 365,
+            'donation' => 365
+        ];
+    }
+
+    /**
      * @return string
      */
     public function generateTable()

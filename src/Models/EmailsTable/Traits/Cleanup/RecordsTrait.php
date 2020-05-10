@@ -10,7 +10,8 @@ use Nip\Database\Query\Update;
  */
 trait RecordsTrait
 {
-    protected $sentDateField = 'date_sent';
+    protected static $sentDateField = 'date_sent';
+
     protected $daysToKeepData = 365;
 
     /**
@@ -21,7 +22,7 @@ trait RecordsTrait
         /** @var Update $query */
         $query = $this->newUpdateQuery();
         $query->where(
-            '`' . $this->sentDateField . '` <= DATE_SUB(CURRENT_DATE(), INTERVAL ' . $this->daysToKeepData . ' DAY)'
+            '`' . $this::getSentDateField() . '` <= DATE_SUB(CURRENT_DATE(), INTERVAL ' . $this->daysToKeepData . ' DAY)'
         );
         $query->data([
             'vars' => '',
@@ -31,5 +32,31 @@ trait RecordsTrait
         ]);
 
         return $query->execute();
+    }
+
+    /**
+     * @return string
+     */
+    public static function getSentDateField(): string
+    {
+        return self::$sentDateField;
+    }
+
+    /**
+     * @param string $sentDateField
+     */
+    public static function setSentDateField(string $sentDateField)
+    {
+        self::$sentDateField = $sentDateField;
+    }
+
+    /**
+     * @return float[]|int[]
+     */
+    public static function reduceEmailsByType()
+    {
+        if (method_exists())
+        $types[            '*'] = 365 * 2;
+        return $types;
     }
 }
