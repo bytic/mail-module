@@ -53,6 +53,8 @@ class EmailsCleanupRecords
             '`' . $emailsManager::getSentDateField() . '` <= DATE_SUB(CURRENT_DATE(), INTERVAL ' . $days . ' DAY)'
         );
 
+        $query->limit(500);
+
         return $query;
     }
 }

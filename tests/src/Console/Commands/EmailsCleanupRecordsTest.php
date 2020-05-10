@@ -38,7 +38,7 @@ class EmailsCleanupRecordsTest extends AbstractTest
 
         self::assertInstanceOf(Delete::class, $query);
         self::assertSame(
-            'DELETE FROM `emails` WHERE `type` = \'donation\' AND `date_sent` <= DATE_SUB(CURRENT_DATE(), INTERVAL 365 DAY)',
+            'DELETE FROM `emails` WHERE `type` = \'donation\' AND `date_sent` <= DATE_SUB(CURRENT_DATE(), INTERVAL 365 DAY) LIMIT 500',
             $query->getString()
         );
     }
