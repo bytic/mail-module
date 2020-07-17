@@ -42,12 +42,8 @@ trait EmailTrait
     public function populateFromConfig()
     {
         $config = app('config');
-        $this->from = $config->get('EMAIL.from');
-        $this->from_name = $config->get('EMAIL.from_name');
-
-        $this->smtp_host = $config->get('SMTP.host');
-        $this->smtp_user = $config->get('SMTP.username');
-        $this->smtp_password = $config->get('SMTP.password');
+        $this->from = $config->get('mail.from.address');
+        $this->from_name = $config->get('mail.from.address');
     }
 
     /**
