@@ -6,7 +6,6 @@ use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
 use Nip\Mail\Models\Mailable\RecordTrait as MailableRecordTrait;
 use Nip\MailModule\Models\EmailsTable\Traits\MergeTags\MergeTagsRecordTrait;
 use Nip\Records\AbstractModels\Record;
-use Nip_File_System;
 use Swift_Attachment;
 use Nip\Mail\Mailer;
 use Nip\Mail\Message;
@@ -121,14 +120,13 @@ trait EmailTrait
     public function delete()
     {
         $this->clearAttachments();
-        return parent::delete();
+        parent::delete();
     }
 
     public function clearAttachments()
     {
-        $file = $this->getFiles()->delete();
+        $this->getFiles()->delete();
     }
-
 
     /**
      * @param Message $message
@@ -158,6 +156,8 @@ trait EmailTrait
     /**
      * @param null $value
      * @return bool
+     * @noinspection PhpUnused
+     * @noinspection PhpMethodNamingConventionInspection
      */
     public function IsHTML($value = null)
     {
@@ -217,7 +217,7 @@ trait EmailTrait
 //            $this->subject = '';
 //            $this->body = '';
             //        $this->vars = '';
-            $this->date_sent = date(DATE_DB);
+            $this->date_sent = date('Y-m-d H:i:s');
             $this->update();
 
             $this->clearAttachments();

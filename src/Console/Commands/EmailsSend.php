@@ -43,7 +43,7 @@ class EmailsSend
 
     /**
      * @param $emails
-     * @return int
+     * @return int|bool
      */
     protected function sendEmails($emails)
     {
@@ -51,13 +51,14 @@ class EmailsSend
             return false;
         }
         $sent = 0;
+        $recipients = 0;
         foreach ($emails as $email) {
             echo 'send email [ID:' . $email->id . '][TO:' . implode(',', array_keys($email->getTos())) . ']';
             try {
                 $recipients = $email->send();
                 $sent++;
-            } catch (Exception $e) {
-                echo $e->getMessage();
+            } catch (Exception $exception) {
+                echo $exception->getMessage();
 //            die('');
             }
             echo '[R:' . $recipients . ']<br />' . "\n";
