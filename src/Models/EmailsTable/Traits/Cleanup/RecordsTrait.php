@@ -55,8 +55,9 @@ trait RecordsTrait
      */
     public static function reduceEmailsByType()
     {
-        if (method_exists())
-        $types[            '*'] = 365 * 2;
+        if (method_exists()) {
+            $types[            '*'] = 365 * 2;
+        }
         return $types;
     }
 }

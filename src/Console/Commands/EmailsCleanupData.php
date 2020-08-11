@@ -11,7 +11,6 @@ use Nip\Records\Locator\ModelLocator;
  */
 class EmailsCleanupData
 {
-
     /**
      * @return int
      */
