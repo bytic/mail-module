@@ -13,8 +13,6 @@ use Nip\Records\RecordManager;
  */
 class EmailsCleanupRecords
 {
-
-
     public function handle()
     {
         /** @var EmailsTrait $emailsManager */
