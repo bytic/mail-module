@@ -3,12 +3,11 @@
 namespace Nip\MailModule\Models\EmailsTable;
 
 use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
+use Nip\Mail\Mailer;
+use Nip\Mail\Message;
 use Nip\Mail\Models\Mailable\RecordTrait as MailableRecordTrait;
 use Nip\MailModule\Models\EmailsTable\Traits\MergeTags\MergeTagsRecordTrait;
 use Nip\Records\AbstractModels\Record;
-use Swift_Attachment;
-use Nip\Mail\Mailer;
-use Nip\Mail\Message;
 
 /**
  * Trait EmailTrait
@@ -135,9 +134,7 @@ trait EmailTrait
     {
         $emailFiles = $this->getFiles();
         foreach ($emailFiles as $emailFile) {
-            $message->attach(
-                Swift_Attachment::newInstance($emailFile->read(), $emailFile->getName())
-            );
+            $message->attachFromContent($emailFile->read(), $emailFile->getName());
         }
     }
 
