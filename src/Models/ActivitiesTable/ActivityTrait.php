@@ -36,9 +36,11 @@ trait ActivityTrait
             unset($notification[$type]);
         }
 
+        $extraValues = [];
         foreach ($notification as $type => $value) {
-            $this->values[$type] = $value;
+            $extraValues[$type] = $value;
         }
+        $this->values = $extraValues;
     }
 
     /**

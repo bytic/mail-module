@@ -22,7 +22,7 @@
     }
   },
   "require": {
-    "php": "^7.0",
+    "php": "^7.1",
     "ext-json": "*",
     "bytic/database": "^0.9|^1.0",
     "bytic/orm": "^0.9|^1.0",

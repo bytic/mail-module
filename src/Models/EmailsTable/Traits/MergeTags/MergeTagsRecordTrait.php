@@ -23,7 +23,8 @@ trait MergeTagsRecordTrait
         if (is_string($vars)) {
             $this->setDataValue('vars', $vars);
         } else {
-            $this->mergeTags = $vars;
+            $this->setMergeTags($vars);
+            $this->saveMergeTagsToDbField();
         }
 
         return $this;
