@@ -14,7 +14,7 @@ class EmailsCleanupData
     /**
      * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         /** @var EmailsTrait $emailsManager */
         $emailsManager = ModelLocator::get('emails');

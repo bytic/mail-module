@@ -27,17 +27,17 @@ class EmailCrons
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public static function cleanupRecords(): int
+    public static function cleanupRecords()
     {
         return (new EmailsCleanupData())->handle();
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public static function cleanupData(): int
+    public static function cleanupData()
     {
         return (new EmailsCleanupRecords())->handle();
     }
