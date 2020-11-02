@@ -37,7 +37,7 @@ class RecordsTraitTest extends AbstractTest
         self::assertSame(
             'UPDATE `emails` '
             . 'SET `vars` = \'\', `body` = \'\', `compiled_subject` = \'\', `compiled_body` = \'\' '
-            . 'WHERE `date_sent` <= DATE_SUB(CURRENT_DATE(), INTERVAL 365 DAY)',
+            . 'WHERE `date_sent` <= DATE_SUB(CURRENT_DATE(), INTERVAL 500 DAY)',
             $query
         );
     }

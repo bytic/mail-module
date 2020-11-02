@@ -3,6 +3,7 @@
 namespace Nip\MailModule\Utility;
 
 use Nip\MailModule\Console\Commands\EmailsCleanupData;
+use Nip\MailModule\Console\Commands\EmailsCleanupRecords;
 use Nip\MailModule\Console\Commands\EmailsSend;
 
 /**
@@ -14,7 +15,7 @@ class EmailCrons
     /**
      * @return int
      */
-    public static function send()
+    public static function send(): int
     {
         return (new EmailsSend())->handle();
     }
@@ -28,7 +29,7 @@ class EmailCrons
     /**
      * @return int
      */
-    public static function cleanupRecords()
+    public static function cleanupRecords(): int
     {
         return (new EmailsCleanupData())->handle();
     }
@@ -36,8 +37,8 @@ class EmailCrons
     /**
      * @return int
      */
-    public static function cleanupData()
+    public static function cleanupData(): int
     {
-        return (new EmailsCleanupData())->handle();
+        return (new EmailsCleanupRecords())->handle();
     }
 }

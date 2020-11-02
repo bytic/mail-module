@@ -2,6 +2,7 @@
 
 namespace Nip\MailModule\Models\EmailsTable\Traits\Cleanup;
 
+use Nip\Config\Config;
 use Nip\Database\Query\Update;
 
 /**
@@ -12,7 +13,7 @@ trait RecordsTrait
 {
     protected static $sentDateField = 'date_sent';
 
-    protected $daysToKeepData = 365;
+    protected $daysToKeepData = 500;
 
     /**
      * @return \Nip\Database\Result
@@ -53,11 +54,13 @@ trait RecordsTrait
     /**
      * @return float[]|int[]
      */
-    public static function reduceEmailsByType()
+    public static function reduceEmailsByType(): array
     {
-        if (method_exists()) {
-            $types[            '*'] = 365 * 2;
+        $config = config('mail.cleanup.ttl');
+
+        if ($config instanceof Config) {
+            return $config->toArray();
         }
-        return $types;
+        return ['*' => 365 * 2];
     }
 }

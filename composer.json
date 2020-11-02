@@ -24,11 +24,9 @@
   "require": {
     "php": "^7.1",
     "ext-json": "*",
-    "bytic/database": "^0.9|^1.0",
     "bytic/orm": "^0.9|^1.0",
     "bytic/mail": "^0.9|^1.0",
-    "bytic/medialibrary": "^0.8|^0.9",
-    "bytic/filesystem": "^0.9|^1.0"
+    "bytic/medialibrary": "^0.8|^0.9"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.5|^8.0|^9.0",
