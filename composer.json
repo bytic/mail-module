@@ -22,13 +22,14 @@
     }
   },
   "require": {
-    "php": "^7.1",
+    "php": "^7.1|^8.0",
     "ext-json": "*",
     "bytic/orm": "^0.9|^1.0",
     "bytic/mail": "^0.9|^1.0",
     "bytic/medialibrary": "^0.8|^0.9"
   },
   "require-dev": {
+    "bytic/event-dispatcher": "^0.9|^1.0",
     "phpunit/phpunit": "^7.5|^8.0|^9.0",
     "mockery/mockery": "^1.2"
   }

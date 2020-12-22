@@ -2,6 +2,7 @@
 
 namespace Nip\MailModule\Models\EmailsTable;
 
+use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
 use Nip\Mail\Mailer;
 use Nip\Mail\Message;
@@ -36,6 +37,9 @@ trait EmailTrait
     use MailableRecordTrait;
     use HasMediaTrait;
     use MergeTagsRecordTrait;
+    use TimestampableTrait;
+
+    protected  static $createTimestamps = 'created';
 
     public function populateFromConfig()
     {
@@ -103,17 +107,6 @@ trait EmailTrait
         }
 
         return $emailsTos;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function insert()
-    {
-        $this->saveMergeTagsToDbField();
-        $this->created = date('Y-m-d H:i:s');
-
-        return parent::insert();
     }
 
     public function delete()
