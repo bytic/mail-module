@@ -2,6 +2,7 @@
 
 namespace Nip\MailModule\Models\EmailsTable\Traits\MergeTags;
 
+use Nip\Mail\Models\MergeTags\MergeTagsDbEncoder;
 use Nip\Mail\Models\MergeTags\RecordTrait as MailMergeTagsRecordTrait;
 
 /**
@@ -12,6 +13,7 @@ trait MergeTagsRecordTrait
 {
     use MailMergeTagsRecordTrait {
         generateMergeTags as generateMergeTagsTrait;
+        saveMergeTagsToDbField as saveMergeTagsToDbFieldTrait;
     }
 
     /**
@@ -36,6 +38,11 @@ trait MergeTagsRecordTrait
     public function getVars()
     {
         return $this->getMergeTags();
+    }
+
+    public function saveMergeTagsToDbField()
+    {
+        $this->saveMergeTagsToDbFieldTrait();
     }
 
     /**
