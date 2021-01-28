@@ -4,20 +4,21 @@ namespace Nip\MailModule\Console\Commands;
 
 use Nip\Database\Query\Delete;
 use Nip\Database\Result;
-use Nip\MailModule\Models\EmailsTable\EmailsTrait;
-use Nip\Records\Locator\ModelLocator;
-use Nip\Records\RecordManager;
+use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
+use Nip\Records\AbstractModels\RecordManager;
 
 /**
  * Class EmailsCleanupRecords
  * @package Nip\MailModule\Console\Commands
  */
-class EmailsCleanupRecords
+class EmailsCleanupRecords extends EmailsAbstract
 {
+    /**
+     * @return bool|int
+     */
     public function handle()
     {
-        /** @var EmailsTrait $emailsManager */
-        $emailsManager = ModelLocator::get('emails');
+        $emailsManager = $this->emailsManager();
 
         $types = $emailsManager::reduceEmailsByType();
         $records = 0;
@@ -28,9 +29,9 @@ class EmailsCleanupRecords
     }
 
     /**
-     * @param EmailsTrait|RecordManager $emailsManager
-     * @param $type
-     * @param $days
+     * @param RecordManager $emailsManager
+     * @param string $type
+     * @param int $days
      * @return bool|int
      */
     protected function deleteByType(RecordManager $emailsManager, string $type, $days)
@@ -44,13 +45,14 @@ class EmailsCleanupRecords
     }
 
     /**
-     * @param EmailsTrait|RecordManager $emailsManager
-     * @param $type
-     * @param $days
+     * @param RecordManager $emailsManager
+     * @param string $type
+     * @param int $days
      * @return Delete
      */
     protected function deleteByTypeQuery($emailsManager, $type, $days)
     {
+        /** @var Emails $emailsManager */
         $query = $emailsManager->newDeleteQuery();
         if (is_string($type) && strlen($type) > 1) {
             $query->where('`type` = ?', $type);

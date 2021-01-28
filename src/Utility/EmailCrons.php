@@ -20,7 +20,7 @@ class EmailCrons
         return (new EmailsSend())->handle();
     }
 
-    public static function cleanup()
+    public static function cleanup(): void
     {
         static::cleanupData();
         static::cleanupRecords();

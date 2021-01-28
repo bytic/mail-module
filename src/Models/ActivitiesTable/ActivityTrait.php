@@ -8,7 +8,7 @@ use Nip\Records\Traits\AbstractTrait\RecordTrait as AbstractRecordTrait;
  * Trait ActivityTrait
  * @package Nip\Mail\Models\ActivitiesTable
  *
- * @property $values
+ * @property string $values
  */
 trait ActivityTrait
 {
@@ -20,7 +20,7 @@ trait ActivityTrait
      */
     public function writeDBData($data = [])
     {
-        $this->values = unserialize($data['values']);
+        $this->values = (isset($data['values'])) ? unserialize($data['values']) : [];
 
         return parent::writeDBData($data);
     }

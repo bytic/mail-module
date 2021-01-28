@@ -4,13 +4,12 @@ namespace Nip\MailModule\Console\Commands;
 
 use Exception;
 use Nip\Records\Collections\Collection as RecordCollection;
-use Nip\Records\Locator\ModelLocator;
 
 /**
  * Class EmailsSend
  * @package Nip\MailModule\Console\Commands
  */
-class EmailsSend
+class EmailsSend extends EmailsAbstract
 {
     /**
      * @return int
@@ -32,7 +31,7 @@ class EmailsSend
 
     /**
      * @param int $number
-     * @return int
+     * @return int|bool
      */
     protected function sendBatch($number = 1)
     {
@@ -42,7 +41,7 @@ class EmailsSend
     }
 
     /**
-     * @param $emails
+     * @param RecordCollection $emails
      * @return int|bool
      */
     protected function sendEmails($emails)
@@ -73,7 +72,7 @@ class EmailsSend
      */
     protected function getEmailsBatch($count = 10, $offset = 0)
     {
-        $emailsManager = ModelLocator::get('emails');
+        $emailsManager = $this->emailsManager();
         return $emailsManager->findByParams(
             [
                 'where' => ['`sent` = \'no\' '],

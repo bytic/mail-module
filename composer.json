@@ -30,7 +30,35 @@
   },
   "require-dev": {
     "bytic/event-dispatcher": "^0.9|^1.0",
-    "phpunit/phpunit": "^7.5|^8.0|^9.0",
+    "bytic/phpqatools": "^1.0",
     "mockery/mockery": "^1.2"
+  },
+  "scripts": {
+    "tests": [
+      "@cs",
+      "@analyse",
+      "@test"
+    ],
+    "test": [
+      "phpunit"
+    ],
+    "analyse": [
+      "@stan",
+      "@psalm"
+    ],
+    "cs": [
+      "phpcs"
+    ],
+    "cs-fix": [
+      "phpcbf"
+    ],
+    "coverage": [
+      "php -dzend_extension=xdebug.so ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage"
+    ],
+    "metrics": [
+      "phpmetrics --report-html=build/metrics --exclude=Exception src"
+    ],
+    "stan": "phpstan analyse",
+    "psalm": "psalm --output-format=compact --find-dead-code --find-unused-psalm-suppress --long-progress "
   }
 }

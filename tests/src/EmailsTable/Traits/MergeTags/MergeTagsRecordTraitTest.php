@@ -14,6 +14,9 @@ use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
  */
 class MergeTagsRecordTraitTest extends AbstractTest
 {
+    /**
+     * @return void
+     */
     public function test_setVars()
     {
         $email = new Email();
@@ -22,6 +25,9 @@ class MergeTagsRecordTraitTest extends AbstractTest
         self::assertSame([1 => 2], $email->getMergeTags());
     }
 
+    /**
+     * @return void
+     */
     public function test_saveMergeTagsToDbField()
     {
         $email = new Email();

@@ -39,7 +39,7 @@ trait EmailTrait
     use MergeTagsRecordTrait;
     use TimestampableTrait;
 
-    protected  static $createTimestamps = 'created';
+    protected static $createTimestamps = 'created';
 
     public function populateFromConfig()
     {
@@ -134,7 +134,7 @@ trait EmailTrait
     /**
      * @return array|null
      */
-    protected function getCustomArgs()
+    protected function getCustomArgs(): ?array
     {
         $args = [];
         $args['category'] = $this->type;
