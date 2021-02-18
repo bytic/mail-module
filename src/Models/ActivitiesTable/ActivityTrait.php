@@ -32,7 +32,7 @@ trait ActivityTrait
     {
         foreach (['smtp-id', 'category', 'email', 'event', 'timestamp'] as $type) {
             $varName = $type == 'smtp-id' ? 'smtp_id' : $type;
-            $this->{$varName} = $notification[$type];
+            $this->{$varName} = isset($notification[$type]) ? $notification[$type] : '';
             unset($notification[$type]);
         }
 
