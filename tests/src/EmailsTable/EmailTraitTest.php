@@ -12,6 +12,29 @@ use Swift_Message;
  */
 class EmailTraitTest extends AbstractTest
 {
+    public function test_buildMailMessageRecipients_replyTo_empty()
+    {
+        $email = new Email();
+//        $email->reply_to = 'reply_to@mail.com';
+
+        $message = $email->newMailMessage();
+        $email->buildMailMessageRecipients($message);
+
+        self::assertNull($message->getReplyTo());
+    }
+
+    public function test_buildMailMessageRecipients_replyTo_set()
+    {
+        $email = new Email();
+        $email->reply_to = 'reply_to@mail.com';
+        $email->from_name = 'My Name';
+
+        $message = $email->newMailMessage();
+        $email->buildMailMessageRecipients($message);
+
+        self::assertSame(['reply_to@mail.com' => 'My Name'], $message->getReplyTo());
+    }
+
     public function testBuildMailMessageAttachments()
     {
         $email = new Email();
