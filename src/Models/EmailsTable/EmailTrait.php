@@ -46,7 +46,7 @@ trait EmailTrait
     {
         $config = app('config');
         $this->from = $config->get('mail.from.address');
-        $this->from_name = $config->get('mail.from.address');
+        $this->from_name = $config->get('mail.from.name');
     }
 
     /**
@@ -64,6 +64,11 @@ trait EmailTrait
      */
     public function getFrom()
     {
+        if (empty($this->getAttribute('from'))) {
+            $config = app('config');
+            $this->from = $config->get('mail.from.address');
+            $this->from_name = $config->get('mail.from.name');
+        }
         return [$this->from => html_entity_decode($this->from_name, ENT_QUOTES)];
     }
 
