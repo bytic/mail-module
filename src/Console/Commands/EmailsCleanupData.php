@@ -2,6 +2,8 @@
 
 namespace Nip\MailModule\Console\Commands;
 
+use Nip\Database\Result;
+
 /**
  * Class EmailsCleanupData
  * @package Nip\MailModule\Console\Commands
@@ -13,7 +15,11 @@ class EmailsCleanupData extends EmailsAbstract
      */
     public function handle()
     {
+        /** @var Result $result */
         $result = $this->emailsManager()->reduceOldEmailsData();
-        return $result->numRows();
+        if ($result->checkValid()) {
+            return $result->numRows();
+        }
+        return 0;
     }
 }

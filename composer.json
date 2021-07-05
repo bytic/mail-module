@@ -22,7 +22,6 @@
     }
   },
   "require": {
-    "php": "^7.1|^8.0",
     "ext-json": "*",
     "bytic/orm": "^0.9|^1.0",
     "bytic/mail": "^0.9|^1.0",
