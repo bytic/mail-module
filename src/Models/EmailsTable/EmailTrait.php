@@ -23,6 +23,7 @@ use Nip\Records\AbstractModels\Record;
  * @property string $smtp_password
  * @property string $to
  * @property string $reply_to
+ * @property string $bcc
  * @property string $subject
  * @property string $compiled_subject
  * @property string $body
@@ -124,6 +125,17 @@ trait EmailTrait
             return;
         }
         return [$this->reply_to => html_entity_decode($this->from_name, ENT_QUOTES)];
+    }
+
+    /**
+     * @return array
+     */
+    public function getBccTos()
+    {
+        if (empty($this->bcc)) {
+            return;
+        }
+        return [$this->bcc => ''];
     }
 
     public function delete()
