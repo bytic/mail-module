@@ -16,8 +16,6 @@ use Nip\Records\AbstractModels\Record;
  *
  * @property int $id_item
  * @property string $type
- * @property string $from
- * @property string $from_name
  * @property string $smtp_host
  * @property string $smtp_user
  * @property string $smtp_password
@@ -40,6 +38,11 @@ trait EmailTrait
     use HasMediaTrait;
     use MergeTagsRecordTrait;
     use TimestampableTrait;
+
+    public ?string $from = '';
+    public ?string $from_name = '';
+
+    public ?string $subject = '';
 
     protected static $createTimestamps = 'created';
 
@@ -65,7 +68,7 @@ trait EmailTrait
      */
     public function getFrom()
     {
-        if (empty($this->getAttribute('from'))) {
+        if (empty($this->getPropertyRaw('from'))) {
             $config = app('config');
             $this->from = $config->get('mail.from.address');
             $this->from_name = $config->get('mail.from.name');
