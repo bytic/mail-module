@@ -29,8 +29,7 @@
   },
   "require-dev": {
     "bytic/event-dispatcher": "^0.9|^1.0",
-    "bytic/phpqatools": "^1.0",
-    "mockery/mockery": "^1.2"
+    "bytic/phpqatools": "^1.0"
   },
   "scripts": {
     "tests": [
