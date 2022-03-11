@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Nip\MailModule\Console\Commands;
 
@@ -75,7 +76,7 @@ class EmailsSend extends EmailsAbstract
         $emailsManager = $this->emailsManager();
         return $emailsManager->findByParams(
             [
-                'where' => ['`sent` = \'no\' '],
+                'where' => ['`sent` = \'no\' OR `sent` IS NULL OR `sent` = \'\' '],
                 'limit' => $offset . ',' . $count,
             ]
         );

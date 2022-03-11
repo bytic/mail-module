@@ -40,6 +40,8 @@ trait EmailTrait
     use MergeTagsRecordTrait;
     use TimestampableTrait;
 
+    public ?string $body = null;
+
     public ?string $from = '';
     public ?string $from_name = '';
 
