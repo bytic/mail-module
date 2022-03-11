@@ -73,7 +73,7 @@ trait EmailTrait
             $this->from = $config->get('mail.from.address');
             $this->from_name = $config->get('mail.from.name');
         }
-        return [$this->from => html_entity_decode($this->from_name, ENT_QUOTES)];
+        return html_entity_decode($this->from_name, ENT_QUOTES) . ' <' . $this->from . '>';
     }
 
     /**
