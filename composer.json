@@ -32,31 +32,7 @@
     "bytic/phpqatools": "^1.0"
   },
   "scripts": {
-    "tests": [
-      "@cs",
-      "@analyse",
-      "@test"
-    ],
-    "test": [
-      "phpunit"
-    ],
-    "analyse": [
-      "@stan",
-      "@psalm"
-    ],
-    "cs": [
-      "phpcs"
-    ],
-    "cs-fix": [
-      "phpcbf"
-    ],
-    "coverage": [
-      "php -dzend_extension=xdebug.so ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage"
-    ],
-    "metrics": [
-      "phpmetrics --report-html=build/metrics --exclude=Exception src"
-    ],
-    "stan": "phpstan analyse",
-    "psalm": "psalm --output-format=compact --find-dead-code --find-unused-psalm-suppress --long-progress "
-  }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }

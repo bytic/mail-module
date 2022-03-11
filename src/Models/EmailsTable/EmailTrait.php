@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Nip\MailModule\Models\EmailsTable;
 
@@ -95,7 +96,7 @@ trait EmailTrait
     /**
      * @return string
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
@@ -106,7 +107,7 @@ trait EmailTrait
     public function getTos()
     {
         $emailsTos = [];
-        if (preg_match_all('/\s*"?([^><,"]+)"?\s*((?:<[^><,]+>)?)\s*/', $this->to, $matches, PREG_SET_ORDER) > 0) {
+        if (preg_match_all('/\s*"?([^><,"]+)"?\s*((?:<[^><,]+>)?)\s*/', (string) $this->to, $matches, PREG_SET_ORDER) > 0) {
             foreach ($matches as $m) {
                 if (!empty($m[2])) {
                     $emailsTos[trim($m[2], '<>')] = html_entity_decode($m[1]);
@@ -125,7 +126,7 @@ trait EmailTrait
     public function getReplyTos()
     {
         if (empty($this->reply_to)) {
-            return;
+            return null;
         }
         return [$this->reply_to => html_entity_decode($this->from_name, ENT_QUOTES)];
     }
@@ -136,7 +137,7 @@ trait EmailTrait
     public function getBccTos()
     {
         if (empty($this->bcc)) {
-            return;
+            return null;
         }
         return [$this->bcc => ''];
     }

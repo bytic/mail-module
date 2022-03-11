@@ -5,7 +5,8 @@ namespace Nip\MailModule\Tests\EmailsTable;
 use Nip\Config\Config;
 use Nip\MailModule\Tests\AbstractTest;
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Email;
-use Swift_Message;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Message;
 
 /**
  * Class EmailTraitTest
@@ -19,7 +20,7 @@ class EmailTraitTest extends AbstractTest
         $email->from = 'test@yahoo.com';
         $message = $email->newMailMessage();
         $email->buildMailMessageFrom($message);
-        self::assertSame(['test@yahoo.com' => ''], $message->getFrom());
+        self::assertEquals([Address::create('test@yahoo.com')], $message->getFrom());
     }
 
 
@@ -33,7 +34,7 @@ class EmailTraitTest extends AbstractTest
         $email = new Email();
         $message = $email->newMailMessage();
         $email->buildMailMessageFrom($message);
-        self::assertSame(['test@yahoo.com' => 'Test'], $message->getFrom());
+        self::assertEquals([Address::create('Test <test@yahoo.com>')], $message->getFrom());
     }
 
     public function test_buildMailMessageRecipients_replyTo_empty()
@@ -44,7 +45,7 @@ class EmailTraitTest extends AbstractTest
         $message = $email->newMailMessage();
         $email->buildMailMessageRecipients($message);
 
-        self::assertNull($message->getReplyTo());
+        self::assertEmpty($message->getReplyTo());
     }
 
     public function test_buildMailMessageRecipients_replyTo_set()
@@ -52,11 +53,12 @@ class EmailTraitTest extends AbstractTest
         $email = new Email();
         $email->reply_to = 'reply_to@mail.com';
         $email->from_name = 'My Name';
+        $email->from = 'noreply@test.com';
 
         $message = $email->newMailMessage();
         $email->buildMailMessageRecipients($message);
 
-        self::assertSame(['reply_to@mail.com' => 'My Name'], $message->getReplyTo());
+        self::assertEquals([Address::create('My Name <reply_to@mail.com>')], $message->getReplyTo());
     }
 
     public function testBuildMailMessageAttachments()
@@ -67,6 +69,6 @@ class EmailTraitTest extends AbstractTest
         $message = $email->newMailMessage();
 //        $email->buildMailMessageAttachments($message);
 
-        self::assertInstanceOf(Swift_Message::class, $message);
+        self::assertInstanceOf(Message::class, $message);
     }
 }
