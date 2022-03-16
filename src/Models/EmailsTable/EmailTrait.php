@@ -5,11 +5,11 @@ namespace Nip\MailModule\Models\EmailsTable;
 
 use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
-use Nip\Mail\Mailer;
 use Nip\Mail\Message;
 use Nip\Mail\Models\Mailable\RecordTrait as MailableRecordTrait;
 use Nip\MailModule\Models\EmailsTable\Traits\MergeTags\MergeTagsRecordTrait;
 use Nip\Records\AbstractModels\Record;
+use Symfony\Component\Mailer\MailerInterface;
 
 /**
  * Trait EmailTrait
@@ -109,7 +109,8 @@ trait EmailTrait
     public function getTos()
     {
         $emailsTos = [];
-        if (preg_match_all('/\s*"?([^><,"]+)"?\s*((?:<[^><,]+>)?)\s*/', (string) $this->to, $matches, PREG_SET_ORDER) > 0) {
+        if (preg_match_all('/\s*"?([^><,"]+)"?\s*((?:<[^><,]+>)?)\s*/', (string)$this->to, $matches,
+                PREG_SET_ORDER) > 0) {
             foreach ($matches as $m) {
                 if (!empty($m[2])) {
                     $emailsTos[trim($m[2], '<>')] = html_entity_decode($m[1]);
@@ -228,24 +229,22 @@ trait EmailTrait
     }
 
     /**
-     * @param Mailer $mailer
+     * @param MailerInterface $mailer
      * @param Message $message
      * @param $response
      */
-    protected function afterSend($mailer, $message, $response)
+    protected function afterSend($mailer, $message)
     {
-        if ($response > 0) {
-            $this->sent = 'yes';
-            $this->smtp_user = '';
-            $this->smtp_host = '';
-            $this->smtp_password = '';
+        $this->sent = 'yes';
+        $this->smtp_user = '';
+        $this->smtp_host = '';
+        $this->smtp_password = '';
 //            $this->subject = '';
 //            $this->body = '';
-            //        $this->vars = '';
-            $this->date_sent = date('Y-m-d H:i:s');
-            $this->update();
+        //        $this->vars = '';
+        $this->date_sent = date('Y-m-d H:i:s');
+        $this->update();
 
-            $this->clearAttachments();
-        }
+        $this->clearAttachments();
     }
 }
