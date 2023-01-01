@@ -1,15 +1,15 @@
 <?php
 
-namespace Nip\MailModule\Models\EmailsTable;
+namespace Nip\MailModule\Models\Emails;
 
-use Nip\MailModule\Models\EmailsTable\Traits\Cleanup\RecordsTrait as CleanupRecordsTrait;
+use Nip\MailModule\Models\Emails\Traits\Cleanup\RecordsTrait as CleanupRecordsTrait;
 use Nip\Records\AbstractModels\RecordManager;
 use Nip\Records\EventManager\Events\Event;
 use Nip\Records\Record;
 
 /**
  * Trait EmailsTrait
- * @package Nip\Mail\Models\EmailsTable
+ * @package Nip\Mail\Models\Emails
  */
 trait EmailsTrait
 {

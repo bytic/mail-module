@@ -169,6 +169,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/ergebnis/json-normalizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/slevomat/coding-standard" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/localheinz/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fidry/cpu-core-counter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/array-to-xml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/orm-behaviors" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/orm-filters" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/memoize" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

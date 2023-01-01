@@ -1,6 +1,6 @@
 <?php
 
-namespace Nip\MailModule\Models\LinksTable;
+namespace Nip\MailModule\Models\EmailLinks;
 
 use Nip\Records\Traits\AbstractTrait\RecordsTrait;
 
@@ -8,7 +8,7 @@ use Nip\Records\Traits\AbstractTrait\RecordsTrait;
  * Trait LinksTrait
  * @package Nip\MailModule\Models\LinksTable
  */
-trait LinksTrait
+trait EmailLinksTrait
 {
     use RecordsTrait;
 

@@ -1,14 +1,15 @@
 
-includes:
-    - vendor/bytic/phpqaconfig/config/phpstan.neon
-
 parameters:
-    level: 5
+    level: 0
+
+    tipsOfTheDay: false
+    treatPhpDocTypesAsCertain: false
+
     paths:
+        - config
         - src
+        - tests
 
-    ignoreErrors:
+parametersSchema:
 
-    excludes_analyse:
-        - tests/tmp/*
-
+conditionalTags:

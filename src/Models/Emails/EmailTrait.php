@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace Nip\MailModule\Models\EmailsTable;
+namespace Nip\MailModule\Models\Emails;
 
 use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
 use Nip\Mail\Message;
 use Nip\Mail\Models\Mailable\RecordTrait as MailableRecordTrait;
-use Nip\MailModule\Models\EmailsTable\Traits\MergeTags\MergeTagsRecordTrait;
+use Nip\MailModule\Models\Emails\Traits\MergeTags\MergeTagsRecordTrait;
 use Nip\Records\AbstractModels\Record;
 use Symfony\Component\Mailer\MailerInterface;
 
 /**
  * Trait EmailTrait
- * @package Nip\Mail\Models\EmailsTable
+ * @package Nip\Mail\Models\Emails
  *
  * @property int $id_item
  * @property string $type

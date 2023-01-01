@@ -1,13 +1,13 @@
 <?php
 
-namespace Nip\MailModule\Models\EmailsTable\Traits\MergeTags;
+namespace Nip\MailModule\Models\Emails\Traits\MergeTags;
 
 use Nip\Mail\Models\MergeTags\MergeTagsDbEncoder;
 use Nip\Mail\Models\MergeTags\RecordTrait as MailMergeTagsRecordTrait;
 
 /**
  * Trait MergeTagsRecordTrait
- * @package Nip\MailModule\Models\EmailsTable\Traits\MergeTags
+ * @package Nip\MailModule\Models\Emails\Traits\MergeTags
  */
 trait MergeTagsRecordTrait
 {

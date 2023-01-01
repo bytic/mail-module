@@ -1,6 +1,6 @@
 <?php
 
-namespace Nip\MailModule\Models\EmailsTable\Traits\Cleanup;
+namespace Nip\MailModule\Models\Emails\Traits\Cleanup;
 
 use Nip\Config\Config;
 use Nip\Database\Query\Update;

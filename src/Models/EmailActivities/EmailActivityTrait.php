@@ -1,6 +1,6 @@
 <?php
 
-namespace Nip\MailModule\Models\ActivitiesTable;
+namespace Nip\MailModule\Models\EmailActivities;
 
 use Nip\Records\Traits\AbstractTrait\RecordTrait as AbstractRecordTrait;
 
@@ -10,7 +10,7 @@ use Nip\Records\Traits\AbstractTrait\RecordTrait as AbstractRecordTrait;
  *
  * @property string $values
  */
-trait ActivityTrait
+trait EmailActivityTrait
 {
     use AbstractRecordTrait;
 

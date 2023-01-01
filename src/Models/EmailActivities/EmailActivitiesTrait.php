@@ -1,6 +1,6 @@
 <?php
 
-namespace Nip\MailModule\Models\ActivitiesTable;
+namespace Nip\MailModule\Models\EmailActivities;
 
 use Nip\Records\Traits\AbstractTrait\RecordsTrait;
 
@@ -8,7 +8,7 @@ use Nip\Records\Traits\AbstractTrait\RecordsTrait;
  * Trait ActivitiesTrait
  * @package Nip\Mail\Models\ActivitiesTable
  */
-trait ActivitiesTrait
+trait EmailActivitiesTrait
 {
     use RecordsTrait;
 
