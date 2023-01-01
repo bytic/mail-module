@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\AbstractModels;
 
-use Nip\MailModule\Utility\PackageConfig;
 use Nip\Database\Connections\Connection;
+use Nip\MailModule\Utility\PackageConfig;
 
 /**
  * Trait HasDatabaseConnectionTrait.

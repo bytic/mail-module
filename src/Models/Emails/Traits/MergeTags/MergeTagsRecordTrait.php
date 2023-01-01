@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\Emails\Traits\MergeTags;
 
-use Nip\Mail\Models\MergeTags\MergeTagsDbEncoder;
 use Nip\Mail\Models\MergeTags\RecordTrait as MailMergeTagsRecordTrait;
 
 /**
- * Trait MergeTagsRecordTrait
- * @package Nip\MailModule\Models\Emails\Traits\MergeTags
+ * Trait MergeTagsRecordTrait.
  */
 trait MergeTagsRecordTrait
 {
@@ -17,12 +17,11 @@ trait MergeTagsRecordTrait
     }
 
     /**
-     * @param $vars
      * @return $this
      */
     public function setVars($vars)
     {
-        if (is_string($vars)) {
+        if (\is_string($vars)) {
             $this->setDataValue('vars', $vars);
         } else {
             $this->setMergeTags($vars);
@@ -46,7 +45,7 @@ trait MergeTagsRecordTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * Used to decode html entities to proper chars
      */
     protected function generateMergeTags()
@@ -54,7 +53,7 @@ trait MergeTagsRecordTrait
         $mergeTags = $this->generateMergeTagsTrait();
         $mergeTags = array_map(
             function ($item) {
-                return is_string($item) ? html_entity_decode($item, ENT_QUOTES) : $item;
+                return \is_string($item) ? html_entity_decode($item, \ENT_QUOTES) : $item;
             },
             $mergeTags
         );

@@ -1,20 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\EmailLinks;
 
 use Nip\Database\Query\Insert;
 use Nip\Records\Traits\AbstractTrait\RecordTrait as AbstractRecordTrait;
 
 /**
- * Trait LinkTrait
- * @package Nip\MailModule\Models\LinksTable
+ * Trait LinkTrait.
  */
 trait EmailLinkTrait
 {
     use AbstractRecordTrait;
 
     /**
-     * @param $notification
      * @return Insert
      */
     public function incrementQueryFromSendGrid($notification)

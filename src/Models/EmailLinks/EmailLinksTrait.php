@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\EmailLinks;
 
 use Nip\Records\Traits\AbstractTrait\RecordsTrait;
 
 /**
- * Trait LinksTrait
- * @package Nip\MailModule\Models\LinksTable
+ * Trait LinksTrait.
  */
 trait EmailLinksTrait
 {

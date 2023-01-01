@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Console\Commands;
 
 use Nip\Database\Query\Delete;
@@ -8,8 +10,7 @@ use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
 use Nip\Records\AbstractModels\RecordManager;
 
 /**
- * Class EmailsCleanupRecords
- * @package Nip\MailModule\Console\Commands
+ * Class EmailsCleanupRecords.
  */
 class EmailsCleanupRecords extends EmailsAbstract
 {
@@ -25,13 +26,13 @@ class EmailsCleanupRecords extends EmailsAbstract
         foreach ($types as $type => $days) {
             $records += $this->deleteByType($emailsManager, $type, $days);
         }
+
         return $records;
     }
 
     /**
-     * @param RecordManager $emailsManager
-     * @param string $type
      * @param int $days
+     *
      * @return bool|int
      */
     protected function deleteByType(RecordManager $emailsManager, string $type, $days)
@@ -41,20 +42,22 @@ class EmailsCleanupRecords extends EmailsAbstract
         if ($result instanceof Result && $result->isValid()) {
             return $result->numRows();
         }
+
         return 0;
     }
 
     /**
      * @param RecordManager $emailsManager
-     * @param string $type
-     * @param int $days
+     * @param string        $type
+     * @param int           $days
+     *
      * @return Delete
      */
     protected function deleteByTypeQuery($emailsManager, $type, $days)
     {
         /** @var Emails $emailsManager */
         $query = $emailsManager->newDeleteQuery();
-        if (is_string($type) && strlen($type) > 1) {
+        if (\is_string($type) && \strlen($type) > 1) {
             $query->where('`type` = ?', $type);
         }
         $query->where(

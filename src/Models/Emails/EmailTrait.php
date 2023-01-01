@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Nip\MailModule\Models\Emails;
@@ -12,10 +13,9 @@ use Nip\Records\AbstractModels\Record;
 use Symfony\Component\Mailer\MailerInterface;
 
 /**
- * Trait EmailTrait
- * @package Nip\Mail\Models\Emails
+ * Trait EmailTrait.
  *
- * @property int $id_item
+ * @property int    $id_item
  * @property string $type
  * @property string $smtp_host
  * @property string $smtp_user
@@ -35,8 +35,8 @@ use Symfony\Component\Mailer\MailerInterface;
  */
 trait EmailTrait
 {
-    use MailableRecordTrait;
     use HasMediaTrait;
+    use MailableRecordTrait;
     use MergeTagsRecordTrait;
     use TimestampableTrait;
 
@@ -66,7 +66,7 @@ trait EmailTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * Used to decode html entities to proper chars
      */
     public function getFrom()
@@ -76,7 +76,8 @@ trait EmailTrait
             $this->from = $config->get('mail.from.address');
             $this->from_name = $config->get('mail.from.name');
         }
-        return html_entity_decode($this->from_name, ENT_QUOTES) . ' <' . $this->from . '>';
+
+        return html_entity_decode($this->from_name, \ENT_QUOTES) . ' <' . $this->from . '>';
     }
 
     /**
@@ -109,8 +110,8 @@ trait EmailTrait
     public function getTos()
     {
         $emailsTos = [];
-        if (preg_match_all('/\s*"?([^><,"]+)"?\s*((?:<[^><,]+>)?)\s*/', (string)$this->to, $matches,
-                PREG_SET_ORDER) > 0) {
+        if (preg_match_all('/\s*"?([^><,"]+)"?\s*((?:<[^><,]+>)?)\s*/', (string) $this->to, $matches,
+            \PREG_SET_ORDER) > 0) {
             foreach ($matches as $m) {
                 if (!empty($m[2])) {
                     $emailsTos[trim($m[2], '<>')] = html_entity_decode($m[1]);
@@ -131,7 +132,8 @@ trait EmailTrait
         if (empty($this->reply_to)) {
             return null;
         }
-        return [$this->reply_to => html_entity_decode($this->from_name, ENT_QUOTES)];
+
+        return [$this->reply_to => html_entity_decode($this->from_name, \ENT_QUOTES)];
     }
 
     /**
@@ -142,6 +144,7 @@ trait EmailTrait
         if (empty($this->bcc)) {
             return null;
         }
+
         return [$this->bcc => ''];
     }
 
@@ -167,9 +170,6 @@ trait EmailTrait
         }
     }
 
-    /**
-     * @return array|null
-     */
     protected function getCustomArgs(): ?array
     {
         $args = [];
@@ -181,17 +181,19 @@ trait EmailTrait
 
     /**
      * @param null $value
+     *
      * @return bool
+     *
      * @noinspection PhpUnused
      * @noinspection PhpMethodNamingConventionInspection
      */
     public function IsHTML($value = null)
     {
-        if (is_bool($value)) {
+        if (\is_bool($value)) {
             $this->is_html = $value ? 'yes' : 'no';
         }
 
-        return $this->is_html == 'yes';
+        return 'yes' == $this->is_html;
     }
 
     /**
@@ -230,7 +232,7 @@ trait EmailTrait
 
     /**
      * @param MailerInterface $mailer
-     * @param Message $message
+     * @param Message         $message
      * @param $response
      */
     protected function afterSend($mailer, $message)

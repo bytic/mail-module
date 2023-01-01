@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Console\Commands;
 
 use Nip\Database\Result;
 
 /**
- * Class EmailsCleanupData
- * @package Nip\MailModule\Console\Commands
+ * Class EmailsCleanupData.
  */
 class EmailsCleanupData extends EmailsAbstract
 {
@@ -20,6 +21,7 @@ class EmailsCleanupData extends EmailsAbstract
         if ($result->checkValid()) {
             return $result->numRows();
         }
+
         return 0;
     }
 }

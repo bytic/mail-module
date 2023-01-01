@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\EmailActivities;
 
 use Nip\Records\Traits\AbstractTrait\RecordTrait as AbstractRecordTrait;
 
 /**
- * Trait ActivityTrait
- * @package Nip\Mail\Models\ActivitiesTable
+ * Trait ActivityTrait.
  *
  * @property string $values
  */
@@ -16,7 +17,6 @@ trait EmailActivityTrait
 
     /**
      * @param bool|array $data
-     * @return
      */
     public function writeDBData($data = [])
     {
@@ -25,14 +25,11 @@ trait EmailActivityTrait
         return parent::writeDBData($data);
     }
 
-    /**
-     * @param $notification
-     */
     public function initFromSendGrid($notification)
     {
         foreach (['smtp-id', 'category', 'email', 'event', 'timestamp'] as $type) {
-            $varName = $type == 'smtp-id' ? 'smtp_id' : $type;
-            $this->{$varName} = isset($notification[$type]) ? $notification[$type] : '';
+            $varName = 'smtp-id' == $type ? 'smtp_id' : $type;
+            $this->{$varName} = $notification[$type] ?? '';
             unset($notification[$type]);
         }
 
@@ -52,7 +49,8 @@ trait EmailActivityTrait
         foreach ($this->values as $type => $value) {
             $return[] = '<strong>' . $type . '</strong> : ' . $value;
         }
-        return implode("<br />", $return);
+
+        return implode('<br />', $return);
     }
 
     /**
@@ -65,6 +63,7 @@ trait EmailActivityTrait
 
         $return = parent::insert();
         $this->values = $values;
+
         return $return;
     }
 
@@ -77,6 +76,7 @@ trait EmailActivityTrait
         $this->values = serialize($this->values);
         $return = parent::update();
         $this->values = $values;
+
         return $return;
     }
 }

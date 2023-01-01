@@ -1,28 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\EmailsTable\Traits\Cleanup;
 
-use Mockery;
 use Nip\Database\Adapters\MySQLi;
 use Nip\Database\Connections\Connection;
 use Nip\MailModule\Tests\AbstractTest;
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
 
 /**
- * Class RecordsTraitTest
- * @package Nip\MailModule\Tests\EmailsTable\Traits\Cleanup
+ * Class RecordsTraitTest.
  */
 class RecordsTraitTest extends AbstractTest
 {
     public function testReduceOldEmailsData()
     {
-        $adapter = Mockery::mock(MySQLi::class)->makePartial();
+        $adapter = \Mockery::mock(MySQLi::class)->makePartial();
         $adapter->shouldReceive('cleanData')
             ->andReturnUsing(function ($data) {
                 return $data;
             });
 
-        $database = Mockery::mock(Connection::class)->makePartial();
+        $database = \Mockery::mock(Connection::class)->makePartial();
         $database->shouldReceive('execute')
             ->andReturnUsing(function ($query) {
                 return $query->getString();
@@ -42,7 +42,7 @@ class RecordsTraitTest extends AbstractTest
         );
     }
 
-    public function test_reduceEmailsByType()
+    public function testReduceEmailsByType()
     {
         $emails = new Emails();
         $types = $emails::reduceEmailsByType();

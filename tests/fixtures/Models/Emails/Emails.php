@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\Fixtures\Models\Emails;
 
 use Nip\MailModule\Models\EmailsTable\EmailsTrait;
 use Nip\Records\RecordManager;
 
 /**
- * Class Emails
- * @package Nip\MailModule\Tests\Fixtures\Models\Emails
+ * Class Emails.
  */
 class Emails extends RecordManager
 {
@@ -20,7 +21,7 @@ class Emails extends RecordManager
     {
         return [
             '*' => 365,
-            'donation' => 365
+            'donation' => 365,
         ];
     }
 

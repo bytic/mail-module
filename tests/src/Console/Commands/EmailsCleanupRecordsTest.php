@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\Console\Commands;
 
 use Mockery;
@@ -12,20 +14,19 @@ use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
 use Nip\Records\Locator\ModelLocator;
 
 /**
- * Class EmailsCleanupRecordsTest
- * @package Nip\MailModule\Tests\Console\Commands
+ * Class EmailsCleanupRecordsTest.
  */
 class EmailsCleanupRecordsTest extends AbstractTest
 {
-    public function test_delete()
+    public function testDelete()
     {
         $query = null;
 
-        $adapter = Mockery::mock(MySQLi::class)->shouldAllowMockingProtectedMethods()->makePartial();
+        $adapter = \Mockery::mock(MySQLi::class)->shouldAllowMockingProtectedMethods()->makePartial();
         $adapter->shouldReceive('cleanData')->andReturnArg(0);
 
         /** @var Connection|Mockery\Mock $database */
-        $database = Mockery::mock(Connection::class)->shouldAllowMockingProtectedMethods()->makePartial();
+        $database = \Mockery::mock(Connection::class)->shouldAllowMockingProtectedMethods()->makePartial();
         $database->shouldReceive('execute')->with(\Mockery::capture($query))->once();
         $database->setAdapter($adapter);
 

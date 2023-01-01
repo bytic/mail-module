@@ -1,15 +1,30 @@
 {
   "name": "bytic/mail-module",
-  "type": "library",
   "description": "Mail Module for bytic framework",
-  "homepage": "https://github.com/bytic/mail-module",
   "license": "MIT",
+  "type": "library",
   "authors": [
     {
       "name": "Gabriel Solomon",
       "email": "hello@gabrielsolomon.ro"
     }
   ],
+  "homepage": "https://github.com/bytic/mail-module",
+  "require": {
+    "ext-json": "*",
+    "bytic/mail": "^0.9 || ^1.0",
+    "bytic/medialibrary": "^0.8 || ^0.9",
+    "bytic/orm": "^0.9 || ^1.0",
+    "bytic/orm-behaviors": "^0.9 || ^1.0",
+    "bytic/orm-filters": "^0.9 || ^1.0",
+    "bytic/package-base": "^1.0"
+  },
+  "require-dev": {
+    "bytic/event-dispatcher": "^0.9 || ^1.0",
+    "bytic/phpqatools": "^1.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Nip\\MailModule\\": "src"
@@ -24,23 +39,6 @@
       "Nip\\MailModule\\Tests\\Fixtures\\": "tests/fixtures"
     }
   },
-  "require": {
-    "ext-json": "*",
-    "bytic/package-base": "^1.0",
-    "bytic/orm": "^0.9|^1.0",
-    "bytic/orm-behaviors": "^0.9 || ^1.0",
-    "bytic/orm-filters": "^0.9 || ^1.0",
-    "bytic/mail": "^0.9|^1.0",
-    "bytic/medialibrary": "^0.8|^0.9"
-  },
-  "require-dev": {
-    "bytic/event-dispatcher": "^0.9|^1.0",
-    "bytic/phpqatools": "^1.0"
-  },
-  "scripts": {
-  },
-  "prefer-stable": true,
-  "minimum-stability": "dev",
   "config": {
     "allow-plugins": {
       "phpstan/extension-installer": true,
@@ -48,5 +46,6 @@
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "bytic/phpqatools": true
     }
-  }
+  },
+  "scripts": {}
 }

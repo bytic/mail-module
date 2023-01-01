@@ -1,23 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\EmailsTable\Traits\MergeTags;
 
+use Mockery as m;
 use Nip\MailModule\Tests\AbstractTest;
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Email;
-
-use Mockery as m;
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
 
 /**
- * Class MergeTagsRecordTraitTest
- * @package Nip\MailModule\Tests\EmailsTable\Traits\MergeTags
+ * Class MergeTagsRecordTraitTest.
  */
 class MergeTagsRecordTraitTest extends AbstractTest
 {
     /**
      * @return void
      */
-    public function test_setVars()
+    public function testSetVars()
     {
         $email = new Email();
         $email->setVars([1 => 2]);
@@ -28,7 +28,7 @@ class MergeTagsRecordTraitTest extends AbstractTest
     /**
      * @return void
      */
-    public function test_saveMergeTagsToDbField()
+    public function testSaveMergeTagsToDbField()
     {
         $email = new Email();
         /** @var m\Mock|Emails $emails */

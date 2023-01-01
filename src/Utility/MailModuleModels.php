@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Utility;
 
 use ByTIC\PackageBase\Utility\ModelFinder;

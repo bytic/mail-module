@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\AbstractModels;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
@@ -11,9 +13,9 @@ use Nip\Records\Filters\Records\HasFiltersRecordsTrait;
  */
 trait CommonRecordsTrait
 {
-    use HasTranslations;
-    use HasFormsRecordsTrait;
     use HasFiltersRecordsTrait;
+    use HasFormsRecordsTrait;
+    use HasTranslations;
 
     protected function generateController(): string
     {

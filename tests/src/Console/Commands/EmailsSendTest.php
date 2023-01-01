@@ -1,20 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\Console\Commands;
 
-use Mockery;
 use Nip\MailModule\Console\Commands\EmailsSend;
 use Nip\MailModule\Tests\AbstractTest;
 
 /**
- * Class EmailsSendTest
- * @package Nip\MailModule\Tests\Console\Commands
+ * Class EmailsSendTest.
  */
 class EmailsSendTest extends AbstractTest
 {
     public function testStoppingOnTwoInvalidBatches()
     {
-        $command = Mockery::mock(EmailsSend::class)
+        $command = \Mockery::mock(EmailsSend::class)
             ->shouldAllowMockingProtectedMethods()
             ->makePartial();
 

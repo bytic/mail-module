@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\EmailsTable;
 
 use Nip\Config\Config;
@@ -9,12 +11,11 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Message;
 
 /**
- * Class EmailTraitTest
- * @package Nip\MailModule\Tests\EmailsTable
+ * Class EmailTraitTest.
  */
 class EmailTraitTest extends AbstractTest
 {
-    public function test_buildMailMessageFrom()
+    public function testBuildMailMessageFrom()
     {
         $email = new Email();
         $email->from = 'test@yahoo.com';
@@ -23,10 +24,8 @@ class EmailTraitTest extends AbstractTest
         self::assertEquals([Address::create('test@yahoo.com')], $message->getFrom());
     }
 
-
-    public function test_buildMailMessageFrom_empty()
+    public function testBuildMailMessageFromEmpty()
     {
-
         /** @var Config $config */
         $config = app('config');
         $config->merge(new Config(['mail' => ['from' => ['address' => 'test@yahoo.com', 'name' => 'Test']]]));
@@ -37,7 +36,7 @@ class EmailTraitTest extends AbstractTest
         self::assertEquals([Address::create('Test <test@yahoo.com>')], $message->getFrom());
     }
 
-    public function test_buildMailMessageRecipients_replyTo_empty()
+    public function testBuildMailMessageRecipientsReplyToEmpty()
     {
         $email = new Email();
 //        $email->reply_to = 'reply_to@mail.com';
@@ -48,7 +47,7 @@ class EmailTraitTest extends AbstractTest
         self::assertEmpty($message->getReplyTo());
     }
 
-    public function test_buildMailMessageRecipients_replyTo_set()
+    public function testBuildMailMessageRecipientsReplyToSet()
     {
         $email = new Email();
         $email->reply_to = 'reply_to@mail.com';

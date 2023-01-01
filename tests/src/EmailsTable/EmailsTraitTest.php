@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Tests\EmailsTable;
 
 use Mockery\Mock;
@@ -9,12 +11,11 @@ use Nip\MailModule\Tests\Fixtures\Models\Emails\Email;
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
 
 /**
- * Class EmailsTraitTest
- * @package Nip\MailModule\Tests\EmailsTable
+ * Class EmailsTraitTest.
  */
 class EmailsTraitTest extends AbstractTest
 {
-    public function test_sent_no_on_insert()
+    public function testSentNoOnInsert()
     {
         $email = new Email();
 

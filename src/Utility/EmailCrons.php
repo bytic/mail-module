@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Utility;
 
 use Nip\MailModule\Console\Commands\EmailsCleanupData;
@@ -7,14 +9,10 @@ use Nip\MailModule\Console\Commands\EmailsCleanupRecords;
 use Nip\MailModule\Console\Commands\EmailsSend;
 
 /**
- * Class EmailCrons
- * @package Nip\MailModule\Utility
+ * Class EmailCrons.
  */
 class EmailCrons
 {
-    /**
-     * @return int
-     */
     public static function send(): int
     {
         return (new EmailsSend())->handle();

@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Console\Commands;
 
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
-use Nip\Records\AbstractModels\RecordManager;
 use Nip\Records\Locator\ModelLocator;
 
 /**
- * Class EmailsAbstract
- * @package Nip\MailModule\Console\Commands
+ * Class EmailsAbstract.
  */
 abstract class EmailsAbstract
 {
@@ -17,7 +17,7 @@ abstract class EmailsAbstract
      */
     protected function emailsManager()
     {
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         return ModelLocator::get('emails');
     }
 }

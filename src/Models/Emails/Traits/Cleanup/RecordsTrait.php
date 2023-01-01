@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule\Models\Emails\Traits\Cleanup;
 
 use Nip\Config\Config;
 use Nip\Database\Query\Update;
 
 /**
- * Trait RecordsTrait
- * @package Nip\Mail\Models\Cleanup
+ * Trait RecordsTrait.
  */
 trait RecordsTrait
 {
@@ -35,17 +36,11 @@ trait RecordsTrait
         return $query->execute();
     }
 
-    /**
-     * @return string
-     */
     public static function getSentDateField(): string
     {
         return self::$sentDateField;
     }
 
-    /**
-     * @param string $sentDateField
-     */
     public static function setSentDateField(string $sentDateField)
     {
         self::$sentDateField = $sentDateField;
@@ -61,6 +56,7 @@ trait RecordsTrait
         if ($config instanceof Config) {
             return $config->toArray();
         }
+
         return ['*' => 365 * 2];
     }
 }

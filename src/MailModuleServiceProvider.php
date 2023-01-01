@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nip\MailModule;
 
-use Nip\MailModule\Utility\PackageConfig;
 use ByTIC\PackageBase\BaseBootableServiceProvider;
 
 /**
@@ -11,6 +12,7 @@ use ByTIC\PackageBase\BaseBootableServiceProvider;
 class MailModuleServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'mail-module';
+
     /**
      * {@inheritdoc}
      */
