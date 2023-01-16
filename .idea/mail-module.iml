@@ -175,6 +175,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/orm-behaviors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/orm-filters" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/memoize" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/locale-detector" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-server-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-server-middleware" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/intl" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

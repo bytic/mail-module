@@ -15,6 +15,12 @@ use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
  */
 class EmailsTraitTest extends AbstractTest
 {
+    public function testGenerateTable()
+    {
+        $emailsRepository = new \Nip\MailModule\Models\Emails\Emails();
+        self::assertSame('emails', $emailsRepository->getTable());
+    }
+
     public function testSentNoOnInsert()
     {
         $email = new Email();

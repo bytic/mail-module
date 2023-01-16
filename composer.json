@@ -21,6 +21,7 @@
   },
   "require-dev": {
     "bytic/event-dispatcher": "^0.9 || ^1.0",
+    "bytic/translation": "^0.9 || ^1.0",
     "bytic/phpqatools": "^1.0"
   },
   "minimum-stability": "dev",

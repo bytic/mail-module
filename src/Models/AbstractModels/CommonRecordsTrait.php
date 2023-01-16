@@ -17,11 +17,6 @@ trait CommonRecordsTrait
     use HasFormsRecordsTrait;
     use HasTranslations;
 
-    protected function generateController(): string
-    {
-        return $this->getTable();
-    }
-
     /**
      * @return string
      */
@@ -32,6 +27,6 @@ trait CommonRecordsTrait
 
     public function getRootNamespace()
     {
-        return 'ByTIC\NotifierBuilder\Models\\';
+        return 'Nip\MailModule\Models\\';
     }
 }
