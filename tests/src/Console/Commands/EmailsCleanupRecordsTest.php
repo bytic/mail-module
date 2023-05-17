@@ -11,6 +11,7 @@ use Nip\Database\Query\Delete;
 use Nip\MailModule\Console\Commands\EmailsCleanupRecords;
 use Nip\MailModule\Tests\AbstractTest;
 use Nip\MailModule\Tests\Fixtures\Models\Emails\Emails;
+use Nip\MailModule\Utility\MailModuleModels;
 use Nip\Records\Locator\ModelLocator;
 
 /**
@@ -32,7 +33,7 @@ class EmailsCleanupRecordsTest extends AbstractTest
 
         $emailsTable = new Emails();
         $emailsTable->setDB($database);
-        ModelLocator::set('emails', $emailsTable);
+        MailModuleModels::emails()->setDB($database);
 
         $command = new EmailsCleanupRecords();
         $command->handle();

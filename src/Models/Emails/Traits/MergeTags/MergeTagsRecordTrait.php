@@ -50,7 +50,7 @@ trait MergeTagsRecordTrait
      */
     protected function generateMergeTags()
     {
-        $mergeTags = $this->generateMergeTagsTrait();
+        $mergeTags = $this->generateMergeTagsTrait() ?: [];
         $mergeTags = array_map(
             function ($item) {
                 return \is_string($item) ? html_entity_decode($item, \ENT_QUOTES) : $item;

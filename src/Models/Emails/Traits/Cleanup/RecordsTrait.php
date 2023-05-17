@@ -6,6 +6,7 @@ namespace Nip\MailModule\Models\Emails\Traits\Cleanup;
 
 use Nip\Config\Config;
 use Nip\Database\Query\Update;
+use Nip\MailModule\Emails\Actions\Cleanup\RemoveOldEmailData;
 
 /**
  * Trait RecordsTrait.
@@ -17,23 +18,11 @@ trait RecordsTrait
     protected $daysToKeepData = 500;
 
     /**
-     * @return \Nip\Database\Result
+     * @deprecated use RemoveOldEmailData::run()
      */
     public function reduceOldEmailsData()
     {
-        /** @var Update $query */
-        $query = $this->newUpdateQuery();
-        $query->where(
-            '`' . $this::getSentDateField() . '` <= DATE_SUB(CURRENT_DATE(), INTERVAL ' . $this->daysToKeepData . ' DAY)'
-        );
-        $query->data([
-            'vars' => '',
-            'body' => '',
-            'compiled_subject' => '',
-            'compiled_body' => '',
-        ]);
-
-        return $query->execute();
+        return RemoveOldEmailData::run();
     }
 
     public static function getSentDateField(): string
@@ -44,6 +33,11 @@ trait RecordsTrait
     public static function setSentDateField(string $sentDateField)
     {
         self::$sentDateField = $sentDateField;
+    }
+
+    public function getDaysToKeepData(): int
+    {
+        return $this->daysToKeepData;
     }
 
     /**
