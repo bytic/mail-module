@@ -139,7 +139,7 @@ trait EmailTrait
     /**
      * @return array
      */
-    public function getBccTos()
+    public function getBccs()
     {
         if (empty($this->bcc)) {
             return null;
