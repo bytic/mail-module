@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nip\MailModule\Console\Commands;
 
+use Nip\MailModule\Models\Emails\Email;
 use Nip\Records\Collections\Collection as RecordCollection;
 
 /**
@@ -44,7 +45,7 @@ class EmailsSend extends EmailsAbstract
     }
 
     /**
-     * @param RecordCollection $emails
+     * @param RecordCollection|Email $emails
      *
      * @return int|bool
      */
@@ -56,7 +57,7 @@ class EmailsSend extends EmailsAbstract
         $sent = 0;
         $recipients = 0;
         foreach ($emails as $email) {
-            echo 'send email [ID:' . $email->id . '][TO:' . implode(',', array_keys($email->getTos())) . ']';
+            echo 'send email [ID:' . $email->id . '][TO:' . implode(',', $email->getTos()) . ']';
             try {
                 $recipients = $email->send();
                 ++$sent;
@@ -82,7 +83,10 @@ class EmailsSend extends EmailsAbstract
 
         return $emailsManager->findByParams(
             [
-                'where' => ['`sent` = \'no\' OR `sent` IS NULL OR `sent` = \'\' '],
+                'where' => [
+                    '(`sent` = \'no\' OR `sent` IS NULL OR `sent` = \'\') ',
+                    '(`to` != "" AND `to` IS NOT NULL)',
+                ],
                 'limit' => $offset . ',' . $count,
             ]
         );
