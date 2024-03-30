@@ -15,6 +15,18 @@ use Symfony\Component\Mime\Message;
  */
 class EmailTraitTest extends AbstractTest
 {
+
+    public function test_getSubject()
+    {
+        $email = new Email();
+        $email->subject = 'Mulțumim pentru &icirc;nscrierea ta {{entry.race.name}} la {{entry.event.name}}!';
+
+        self::assertEquals(
+            'Mulțumim pentru înscrierea ta {{entry.race.name}} la {{entry.event.name}}!',
+            $email->getSubject()
+        );
+    }
+
     public function testBuildMailMessageFrom()
     {
         $email = new Email();

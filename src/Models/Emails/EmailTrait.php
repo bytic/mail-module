@@ -101,7 +101,7 @@ trait EmailTrait
      */
     public function getSubject(): ?string
     {
-        return $this->subject;
+        return html_entity_decode($this->subject);
     }
 
     /**

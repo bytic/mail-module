@@ -190,6 +190,7 @@
       <path value="$PROJECT_DIR$/vendor/ergebnis/json" />
       <path value="$PROJECT_DIR$/vendor/ergebnis/json-pointer" />
       <path value="$PROJECT_DIR$/vendor/bytic/actions" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">

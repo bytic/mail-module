@@ -1,5 +1,7 @@
 .idea/workspace.xml
 .idea/usage.statistics.xml
+.idea/copilot/chatSessions/xd.lck
+
 .phpunit.result.cache
 .php-cs-fixer.cache
 
