@@ -12,18 +12,18 @@
   "homepage": "https://github.com/bytic/mail-module",
   "require": {
     "ext-json": "*",
-    "bytic/mail": "^0.9 || ^1.0",
-    "bytic/actions": "dev-main",
-    "bytic/medialibrary": "^0.8 || ^0.9",
-    "bytic/orm": "^0.9 || ^1.0",
-    "bytic/orm-behaviors": "^0.9 || ^1.0",
-    "bytic/orm-filters": "^0.9 || ^1.0",
-    "bytic/package-base": "^1.0"
+    "bytic/mail": "^0.9 || ^1.0|| ^2.0",
+    "bytic/actions": "dev-main|| ^1.0",
+    "bytic/medialibrary": "^0.8 || ^0.9 || ^1.0",
+    "bytic/orm": "^0.9 || ^1.0 || ^2.0",
+    "bytic/orm-behaviors": "^0.9 || ^1.0 || ^2.0",
+    "bytic/orm-filters": "^0.9 || ^1.0 || ^2.0",
+    "bytic/package-base": "^1.0 || ^2.0"
   },
   "require-dev": {
-    "bytic/cache": "^0.9 || ^1.0",
-    "bytic/event-dispatcher": "^0.9 || ^1.0",
-    "bytic/translation": "^0.9 || ^1.0",
+    "bytic/cache": "^0.9 || ^1.0 || ^2.0",
+    "bytic/event-dispatcher": "^0.9 || ^1.0 || ^2.0",
+    "bytic/translation": "^0.9 || ^1.0 || ^2.0",
     "bytic/phpqatools": "^1.0"
   },
   "minimum-stability": "dev",
