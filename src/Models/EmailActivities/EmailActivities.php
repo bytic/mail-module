@@ -9,6 +9,8 @@ use Nip\MailModule\Models\AbstractModels\HasDatabaseConnectionTrait;
 
 class EmailActivities extends \Nip\Records\RecordManager
 {
+    public const TABLE = 'email-activities';
+
     use EmailActivitiesTrait;
     use CommonRecordsTrait;
     use HasDatabaseConnectionTrait;

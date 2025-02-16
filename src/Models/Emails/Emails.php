@@ -10,6 +10,8 @@ use Nip\Records\RecordManager;
 
 class Emails extends RecordManager
 {
+    public const TABLE = 'emails';
+
     use EmailsTrait;
     use CommonRecordsTrait;
     use HasDatabaseConnectionTrait;
