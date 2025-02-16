@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Nip\MailModule\Models\Emails;
 
 use Nip\MailModule\Models\Emails\Traits\Cleanup\RecordsTrait as CleanupRecordsTrait;
+use Nip\MailModule\Utility\MailModuleModels;
+use Nip\MailModule\Utility\PackageConfig;
 use Nip\Records\AbstractModels\RecordManager;
 use Nip\Records\EventManager\Events\Event;
 use Nip\Records\Record;
@@ -27,5 +29,10 @@ trait EmailsTrait
 
             $record->saveMergeTagsToDbField();
         });
+    }
+
+    protected function generateTable(): string
+    {
+        return PackageConfig::tableName(MailModuleModels::EMAILS, Emails::TABLE);
     }
 }
