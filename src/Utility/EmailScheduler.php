@@ -14,7 +14,7 @@ use Nip\MailModule\Console\Commands\EmailsSend;
  */
 class EmailScheduler
 {
-    public static function schedule(Scheduler $scheduler): int
+    public static function schedule(Scheduler $scheduler)
     {
         self::scheduleSend($scheduler);
         self::scheduleCleanupData($scheduler);
