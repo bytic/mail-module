@@ -14,6 +14,8 @@ use Nip\Records\AbstractModels\RecordManager;
  */
 class EmailsCleanupRecords extends EmailsAbstract
 {
+    public const NAME = 'emails:cleanup-records';
+
     /**
      * @return bool|int
      */

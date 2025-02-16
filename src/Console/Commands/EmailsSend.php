@@ -12,6 +12,8 @@ use Nip\Records\Collections\Collection as RecordCollection;
  */
 class EmailsSend extends EmailsAbstract
 {
+    public const NAME = 'emails:send';
+
     /**
      * @return int
      */

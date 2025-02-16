@@ -14,6 +14,8 @@
     "ext-json": "*",
     "bytic/mail": "^0.9 || ^1.0",
     "bytic/actions": "dev-main",
+    "bytic/console": "^0.9 || ^1.0",
+    "bytic/scheduler": "^0.9 || ^1.0",
     "bytic/medialibrary": "^0.8 || ^0.9",
     "bytic/orm": "^0.9 || ^1.0",
     "bytic/orm-behaviors": "^0.9 || ^1.0",
@@ -47,7 +49,8 @@
       "phpstan/extension-installer": true,
       "ergebnis/composer-normalize": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "bytic/phpqatools": true
+      "bytic/phpqatools": true,
+      "php-http/discovery": true
     }
   },
   "scripts": {}
