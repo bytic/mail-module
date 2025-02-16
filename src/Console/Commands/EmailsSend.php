@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nip\MailModule\Console\Commands;
 
-use Exception;
 use Nip\MailModule\EmailActivities\Actions\CreateActivity;
 use Nip\MailModule\Models\Emails\Email;
 use Nip\Records\Collections\Collection as RecordCollection;
