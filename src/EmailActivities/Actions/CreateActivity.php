@@ -52,7 +52,7 @@ class CreateActivity extends Action
         $activity = MailModuleModels::activities()->getNew();
         $activity->id_email = $this->email->id;
         foreach (self::ATTRIBUTES as $key) {
-            $this->activity->{$key} = $this->getAttribute($key);
+            $activity->{$key} = $this->getAttribute($key);
         }
         $activity->save();
         return $activity;
