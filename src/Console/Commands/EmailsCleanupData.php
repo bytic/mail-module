@@ -12,6 +12,8 @@ use Nip\MailModule\Emails\Actions\Cleanup\RemoveOldEmailData;
  */
 class EmailsCleanupData extends EmailsAbstract
 {
+    public const NAME = 'emails:cleanup-data';
+
     /**
      * @return int|bool
      */

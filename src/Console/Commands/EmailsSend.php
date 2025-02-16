@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace Nip\MailModule\Console\Commands;
 
+use Exception;
+use Nip\MailModule\EmailActivities\Actions\CreateActivity;
 use Nip\MailModule\Models\Emails\Email;
 use Nip\Records\Collections\Collection as RecordCollection;
+use Throwable;
 
 /**
  * Class EmailsSend.
  */
 class EmailsSend extends EmailsAbstract
 {
+    public const NAME = 'emails:send';
+
     /**
      * @return int
      */
@@ -61,9 +66,15 @@ class EmailsSend extends EmailsAbstract
             try {
                 $recipients = $email->send();
                 ++$sent;
-            } catch (\Exception $exception) {
+            } catch (Throwable $exception) {
                 echo $exception->getMessage();
-//            die('');
+                $email->sent = 'error';
+                $email->save();
+
+                CreateActivity::forEmail($email)
+                    ->withEvent($exception->getMessage())
+                    ->withCategory('error')
+                    ->save();
             }
             echo '[R:' . $recipients . ']<br />' . "\n";
         }

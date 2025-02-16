@@ -14,16 +14,20 @@
     "ext-json": "*",
     "bytic/mail": "^0.9 || ^1.0|| ^2.0",
     "bytic/actions": "dev-main|| ^1.0",
+    "bytic/console": "^0.9 || ^1.0",
+    "bytic/scheduler": "^0.9 || ^1.0",
     "bytic/medialibrary": "^0.8 || ^0.9 || ^1.0",
     "bytic/orm": "^0.9 || ^1.0 || ^2.0",
     "bytic/orm-behaviors": "^0.9 || ^1.0 || ^2.0",
     "bytic/orm-filters": "^0.9 || ^1.0 || ^2.0",
+    "bytic/models-smart-properties": "^0.9|^1.0|^2.0",
     "bytic/package-base": "^1.0 || ^2.0"
   },
   "require-dev": {
     "bytic/cache": "^0.9 || ^1.0 || ^2.0",
     "bytic/event-dispatcher": "^0.9 || ^1.0 || ^2.0",
     "bytic/translation": "^0.9 || ^1.0 || ^2.0",
+    "bytic/migrations": "~0.13",
     "bytic/phpqatools": "^1.0"
   },
   "minimum-stability": "dev",
@@ -47,7 +51,8 @@
       "phpstan/extension-installer": true,
       "ergebnis/composer-normalize": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "bytic/phpqatools": true
+      "bytic/phpqatools": true,
+      "php-http/discovery": true
     }
   },
   "scripts": {}
