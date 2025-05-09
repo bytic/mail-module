@@ -15,39 +15,39 @@ use Nip\MailModule\Console\Commands\EmailsSend;
  */
 class EmailScheduler
 {
-    public static function schedule(Scheduler $scheduler, $config = []): void
+    public static function schedule(Scheduler $scheduler, $parameters = [], $bin = null)
     {
-        self::scheduleSend($scheduler, $config);
-        self::scheduleCleanupData($scheduler, $config);
-        self::scheduleCleanupRecords($scheduler, $config);
+        self::scheduleSend($scheduler, $parameters, $bin);
+        self::scheduleCleanupData($scheduler, $parameters, $bin);
+        self::scheduleCleanupRecords($scheduler, $parameters, $bin);
     }
 
-    public static function scheduleSend(Scheduler $scheduler, $config = []): void
+    public static function scheduleSend(Scheduler $scheduler, $parameters = [], $bin = null): void
     {
         $adder = $scheduler
-            ->command(EmailsSend::NAME)
+            ->command(EmailsSend::NAME, $parameters, $bin)
             ->everyMinute();
-        self::sheduleCommandConfig($adder, $config);
+//        self::sheduleCommandConfig($adder, $config);
     }
 
     /**
      */
-    public static function scheduleCleanupRecords(Scheduler $scheduler, $config = [])
+    public static function scheduleCleanupRecords(Scheduler $scheduler, $parameters = [], $bin = null)
     {
         $adder = $scheduler
-            ->command(EmailsCleanupRecords::NAME)
+            ->command(EmailsCleanupRecords::NAME, $parameters, $bin)
             ->setHour('1,2,3');
-        self::sheduleCommandConfig($adder, $config);
+//        self::sheduleCommandConfig($adder, $config);
     }
 
     /**
      */
-    public static function scheduleCleanupData(Scheduler $scheduler, $config = [])
+    public static function scheduleCleanupData(Scheduler $scheduler, $parameters = [], $bin = null)
     {
-        $adder = $scheduler
-            ->command(EmailsCleanupData::NAME, $config = [])
+        $scheduler
+            ->command(EmailsCleanupData::NAME, $parameters, $bin)
             ->setHour('1,2,3');
-        self::sheduleCommandConfig($adder, $config);
+//        self::sheduleCommandConfig($adder, $config);
     }
 
     protected static function sheduleCommandConfig(EventAdder $adder, $config)
