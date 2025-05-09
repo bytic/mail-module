@@ -41,6 +41,9 @@ class RemoveOldEmailData extends Action
     protected function newUpdateQuery(): Update
     {
         $query = $this->repository->newUpdateQuery();
+        $query->where('`sent` = "yes"');
+        $days = $this->repository->getDaysToKeepData();
+        $days = $days > 0 ? $days : 500;
         $query->where(
             '`' . $this->repository::getSentDateField()
             . '` <= DATE_SUB(CURRENT_DATE(), INTERVAL '

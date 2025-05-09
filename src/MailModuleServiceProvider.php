@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Nip\MailModule;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
+use Nip\MailModule\Console\Commands\EmailsCleanupData;
+use Nip\MailModule\Console\Commands\EmailsCleanupRecords;
+use Nip\MailModule\Console\Commands\EmailsSend;
 use Nip\MailModule\Utility\PackageConfig;
 
 /**
@@ -22,6 +25,7 @@ class MailModuleServiceProvider extends BaseBootableServiceProvider
         parent::register();
         $this->addRepositoryNamespace('Nip\MailModule\Models');
     }
+
     public function migrations(): ?string
     {
         if (PackageConfig::shouldRunMigrations()) {
@@ -29,5 +33,14 @@ class MailModuleServiceProvider extends BaseBootableServiceProvider
         }
 
         return null;
+    }
+
+    protected function registerCommands(): void
+    {
+        $this->commands(
+            EmailsSend::class,
+            EmailsCleanupRecords::class,
+            EmailsCleanupData::class,
+        );
     }
 }
