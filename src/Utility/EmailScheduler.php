@@ -27,7 +27,7 @@ class EmailScheduler
         $adder = $scheduler
             ->command(EmailsSend::NAME, $parameters, $bin)
             ->everyMinute();
-//        self::sheduleCommandConfig($adder, $config);
+        self::sheduleCommandConfig($adder, $parameters);
     }
 
     /**
@@ -37,17 +37,17 @@ class EmailScheduler
         $adder = $scheduler
             ->command(EmailsCleanupRecords::NAME, $parameters, $bin)
             ->setHour('1,2,3');
-//        self::sheduleCommandConfig($adder, $config);
+        self::sheduleCommandConfig($adder, $parameters);
     }
 
     /**
      */
     public static function scheduleCleanupData(Scheduler $scheduler, $parameters = [], $bin = null)
     {
-        $scheduler
+        $adder = $scheduler
             ->command(EmailsCleanupData::NAME, $parameters, $bin)
             ->setHour('1,2,3');
-//        self::sheduleCommandConfig($adder, $config);
+        self::sheduleCommandConfig($adder, $parameters);
     }
 
     protected static function sheduleCommandConfig(EventAdder $adder, $config)
