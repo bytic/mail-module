@@ -25,7 +25,7 @@ final class EmailsTableInitial extends AbstractMigration
         if ($exists) {
             return;
         }
-        $table = $this->table($table_name, ['primary_key' => 'id']);
+        $table = $this->table($table_name, ['primary_key' => 'id', 'id' => false]);
         $table
             ->addColumn('id', 'biginteger', ['identity' => true, 'signed' => false])
             ->addColumn('id_organizer', 'integer', ['null' => false])
