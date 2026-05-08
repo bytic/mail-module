@@ -7,6 +7,7 @@ namespace Nip\MailModule;
 use ByTIC\PackageBase\BaseBootableServiceProvider;
 use Nip\MailModule\Console\Commands\EmailsCleanupData;
 use Nip\MailModule\Console\Commands\EmailsCleanupRecords;
+use Nip\MailModule\Console\Commands\EmailsDeduplicateBody;
 use Nip\MailModule\Console\Commands\EmailsSend;
 use Nip\MailModule\Utility\PackageConfig;
 
@@ -41,6 +42,7 @@ class MailModuleServiceProvider extends BaseBootableServiceProvider
             EmailsSend::class,
             EmailsCleanupRecords::class,
             EmailsCleanupData::class,
+            EmailsDeduplicateBody::class,
         );
     }
 }
