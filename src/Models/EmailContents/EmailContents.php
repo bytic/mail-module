@@ -10,7 +10,7 @@ use Nip\Records\RecordManager;
 
 class EmailContents extends RecordManager
 {
-    public const TABLE = 'email_contents';
+    public const TABLE = 'email-contents';
 
     use EmailContentsTrait;
     use CommonRecordsTrait;

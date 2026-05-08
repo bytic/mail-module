@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Nip\MailModule\Emails\Actions\Cleanup;
 
 use Bytic\Actions\Action;
+use Nip\MailModule\EmailContents\Actions\FindOrCreateByBody;
 use Nip\MailModule\Models\EmailContents\EmailContent;
 use Nip\MailModule\Models\Emails\EmailTrait;
-use Nip\MailModule\Utility\MailModuleModels;
 use Nip\Records\AbstractModels\Record;
 
 /**
@@ -41,9 +41,8 @@ class DeduplicateEmailBody extends Action
             return false;
         }
 
-        $contentsManager = MailModuleModels::emailContents();
         /** @var EmailContent $content */
-        $content = $contentsManager->findOrCreateByBody($body);
+        $content = FindOrCreateByBody::forBody($body)->handle();
 
         $email->body_id = $content->id;
         $email->body = '';

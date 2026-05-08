@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nip\MailModule\Tests\EmailContents;
 
+use Nip\MailModule\Models\EmailContents\EmailContents;
 use Nip\MailModule\Models\EmailContents\EmailContentsTrait;
 use Nip\MailModule\Tests\AbstractTest;
 
@@ -30,5 +31,12 @@ class EmailContentsTraitTest extends AbstractTest
             $trait->hashBody('body one'),
             $trait->hashBody('body two')
         );
+    }
+
+    public function test_table_name(): void
+    {
+        $manager = new EmailContents();
+
+        self::assertSame('email-contents', $manager->getTable());
     }
 }

@@ -13,26 +13,6 @@ use Nip\MailModule\Utility\PackageConfig;
 trait EmailContentsTrait
 {
     /**
-     * Find an existing EmailContent record by body hash, or create a new one.
-     */
-    public function findOrCreateByBody(string $body): EmailContent
-    {
-        $hash = $this->hashBody($body);
-        $existing = $this->findByHash($hash);
-        if ($existing instanceof EmailContent) {
-            return $existing;
-        }
-
-        /** @var EmailContent $content */
-        $content = $this->getNew();
-        $content->hash = $hash;
-        $content->body = $body;
-        $content->insert();
-
-        return $content;
-    }
-
-    /**
      * Find an EmailContent record by its body hash.
      */
     public function findByHash(string $hash): ?EmailContent
