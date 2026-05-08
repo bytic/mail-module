@@ -8,7 +8,9 @@ use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\MediaLibrary\HasMedia\HasMediaTrait;
 use Nip\Mail\Message;
 use Nip\Mail\Models\Mailable\RecordTrait as MailableRecordTrait;
+use Nip\MailModule\Models\EmailContents\EmailContent;
 use Nip\MailModule\Models\Emails\Traits\MergeTags\MergeTagsRecordTrait;
+use Nip\MailModule\Utility\MailModuleModels;
 use Nip\Records\AbstractModels\Record;
 use Symfony\Component\Mailer\MailerInterface;
 
@@ -27,6 +29,7 @@ use Symfony\Component\Mailer\MailerInterface;
  * @property string $compiled_subject
  * @property string $body
  * @property string $compiled_body
+ * @property int    $body_id
  * @property string $vars
  * @property string $is_html
  * @property string $sent
@@ -93,6 +96,13 @@ trait EmailTrait
      */
     public function getBody()
     {
+        if (!empty($this->body_id)) {
+            $content = MailModuleModels::emailContents()->findByPk($this->body_id);
+            if ($content instanceof EmailContent) {
+                return $content->body;
+            }
+        }
+
         return $this->body;
     }
 
