@@ -8,7 +8,7 @@ use Nip\MailModule\Emails\Actions\Cleanup\DeduplicateEmailBody;
 
 /**
  * Console command that batch-processes existing email rows and moves their body
- * text into the shared email_contents table.
+ * text into the shared email-contents table.
  *
  * Usage: emails:dedup-body [--batch=500]
  */
