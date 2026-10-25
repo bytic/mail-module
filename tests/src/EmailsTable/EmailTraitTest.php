@@ -27,6 +27,14 @@ class EmailTraitTest extends AbstractTest
         );
     }
 
+    public function test_getBody_returns_body_when_no_body_id(): void
+    {
+        $email = new Email();
+        $email->body = '<p>Hello</p>';
+
+        self::assertSame('<p>Hello</p>', $email->getBody());
+    }
+
     public function testBuildMailMessageFrom()
     {
         $email = new Email();

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nip\MailModule\Models\Emails;
 
+use Nip\MailModule\Emails\Actions\Cleanup\DeduplicateEmailBody;
 use Nip\MailModule\Models\Emails\Traits\Cleanup\RecordsTrait as CleanupRecordsTrait;
 use Nip\MailModule\Utility\MailModuleModels;
 use Nip\MailModule\Utility\PackageConfig;
@@ -28,6 +29,12 @@ trait EmailsTrait
             $record->setIfEmpty('compressed', 'no');
 
             $record->saveMergeTagsToDbField();
+        });
+
+        static::created(function (Event $event) {
+            /** @var EmailTrait|Record $record */
+            $record = $event->getRecord();
+            DeduplicateEmailBody::run($record);
         });
     }
 

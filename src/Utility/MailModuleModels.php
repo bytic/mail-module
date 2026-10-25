@@ -7,6 +7,7 @@ namespace Nip\MailModule\Utility;
 use ByTIC\PackageBase\Utility\ModelFinder;
 use Nip\MailModule\MailModuleServiceProvider;
 use Nip\MailModule\Models\EmailActivities\EmailActivities;
+use Nip\MailModule\Models\EmailContents\EmailContents;
 use Nip\MailModule\Models\EmailLinks\EmailLinks;
 use Nip\MailModule\Models\Emails\Emails;
 use Nip\Records\RecordManager;
@@ -19,6 +20,7 @@ class MailModuleModels extends ModelFinder
     public const EMAILS = 'emails';
     public const ACTIVITIES = 'activities';
     public const LINKS = 'links';
+    public const EMAIL_CONTENTS = 'email_contents';
 
     protected static array $models = [];
 
@@ -60,6 +62,19 @@ class MailModuleModels extends ModelFinder
     public static function linksTable(): string
     {
         return static::getTable(self::LINKS, EmailLinks::TABLE);
+    }
+
+    /**
+     * @return RecordManager|EmailContents
+     */
+    public static function emailContents()
+    {
+        return static::getModels(self::EMAIL_CONTENTS, EmailContents::class);
+    }
+
+    public static function emailContentsTable(): string
+    {
+        return static::getTable(self::EMAIL_CONTENTS, EmailContents::TABLE);
     }
 
     protected static function packageName(): string
